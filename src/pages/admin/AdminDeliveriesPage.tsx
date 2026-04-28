@@ -68,10 +68,17 @@ export default function AdminDeliveriesPage() {
     trackingNumber: delivery.package?.id ?? "--",
     customer:
       delivery.package?.owner?.name || delivery.package?.owner?.email || "--",
-    origin: "--",
+    origin: delivery.package?.origin ?? "--",
     destination: delivery.package?.destination ?? "--",
     status: delivery.status,
-    date: "--",
+    date: new Date(delivery.package?.createdAt ?? 0).toLocaleDateString(
+      undefined,
+      {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      },
+    ),
   }));
 
   const startEditing = (delivery: Delivery) => {

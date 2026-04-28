@@ -56,9 +56,11 @@ export type AdminDelivery = {
   status: PackageStatus;
   package: {
     id: string;
+    createdAt: string;
     name: string;
     weight: number;
     destination?: string | null;
+    origin?: string | null;
     owner?: {
       id: string;
       name?: string | null;
